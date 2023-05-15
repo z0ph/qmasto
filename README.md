@@ -1,14 +1,12 @@
 # :speaker: qmasto
 
-Dead simple AWS SQS to Mastodon serverless speaker :speaker:.
+Dead simple AWS SQS to Mastodon serverless poster :speaker:.
 
-> Publish message :love_letter: to SQS (FIFO), Lambda function will handle publishing it to Mastodon. Automagically. :tada:
+> Publish message :love_letter: to SQS (FIFO), Lambda function will handle publishing toots to Mastodon. Automagically. :tada:
 
-To be honest, my plan is to automate the toots of certain information using this queue in multiple side projects.
+Honestly, my intention is to automate the sharing of specific information through the use of this queue in several side projects. I'm bringing this to your attention because I couldn't find a comparable solution on Github or in open-source projects. I'm hopeful that it may prove useful to someone else.
 
-As usual, I'm sharing this with you folks as I was not able to find equivalent in Github / Open source projects. I hope it could be useful to someone else.
-
-## Getting started
+## 🚀 Getting started
 
 > Update variables in `Makefile` and `tf/variables.tf` according to your environment.
 
@@ -38,7 +36,7 @@ After you've deployed the Terraform you will need to set Mastodon API Keys manua
 
 Set the following credentials in AWS Secret Manager: `AccessToken`
 
-### How to publish a message
+### 🗯️ How to publish a message
 
 #### Using AWS Console
 
@@ -50,7 +48,7 @@ Set the following credentials in AWS Secret Manager: `AccessToken`
 
 [AWS Documentation](https://docs.aws.amazon.com/cli/latest/reference/sqs/send-message.html)
 
-#### Using Python (boto3)
+#### :snake: Using Python (boto3)
 
 ```python
 import boto3
@@ -89,16 +87,16 @@ print(response['MessageId'])
 
 [AWS Documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/sqs-example-sending-receiving-msgs.html)
 
-## Contributing
+## 📝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+## 🧘 License
 
 [MIT](./LICENSE)
 
-### Credits
+### 🐒 Credits
 
 - [AWS SQS](https://aws.amazon.com/sqs/)
-- [AWS Lambda](https://aws.amazon.com/lambda/) function
+- [AWS Lambda](https://aws.amazon.com/lambda/)
 - [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)

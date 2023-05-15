@@ -2,14 +2,14 @@
 .PHONY: help tf-init tf-validate tf-plan tf-package tf-apply layer clean clean-layer cleaning artifacts
 
 ################ Project #######################
-PROJECT ?= qmasto
+PROJECT ?= qmasto-mgda
 DESCRIPTION ?= Dead simple SQS to Mastodon bot
 ################################################
 
 ################ Config ########################
 S3_BUCKET ?= ${PROJECT}-artifacts
 AWS_REGION ?= eu-west-1
-ENV ?= development
+ENV ?= prod
 ################################################
 
 help:
@@ -59,7 +59,10 @@ tf-init:
 		-backend-config="key=$(PROJECT)/$(ENV)-terraform.tfstate"
 
 tf-validate:
-	@terraform validate ./tf/
+	@cd tf && terraform validate
+
+tf-fmt:
+	@cd tf && terraform fmt
 
 tf-plan:
 	@cd tf && terraform plan \
@@ -106,4 +109,4 @@ clean:
 	@find . -name '__pycache__' -exec rm -fr {} +
 ################################################
 
-all: artifacts tf-package tf-init tf-apply
+all: clean artifacts tf-package tf-init tf-apply
